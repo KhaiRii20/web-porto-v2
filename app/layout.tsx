@@ -1,17 +1,18 @@
-import type { Metadata } from "next";
-import { Merriweather } from "next/font/google"; 
-import "./globals.css";
-import 'remixicon/fonts/remixicon.css'; // Import Icon Pack
+// app/layout.tsx
 
-const merriweather = Merriweather({ 
+import type { Metadata } from "next";
+import { Merriweather } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeContext";
+
+const merriweather = Merriweather({
   subsets: ["latin"],
   weight: ["300", "400", "700", "900"],
-  variable: "--font-merriweather",
 });
 
 export const metadata: Metadata = {
   title: "Daffa Khairi | Portfolio",
-  description: "Portfolio of Muhammad Daffa Khairi Addin",
+  description: "Personal portfolio website",
 };
 
 export default function RootLayout({
@@ -20,8 +21,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={merriweather.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* ✨ Remix Icon CDN */}
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />
+      </head>
+      <body className={merriweather.className}>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

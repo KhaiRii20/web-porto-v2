@@ -2,18 +2,110 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+/* === Light Mode (default) === */
+:root {
+  --bg: #EEEEEE;
+  --bg-card: rgba(255, 255, 255, 0.6);
+  --text-main: #06141B;
+  --text-secondary: #4A5C6A;
+  --border: rgba(255, 255, 255, 0.5);
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-shadow: rgba(6, 20, 27, 0.08);
+  --input-bg: rgba(238, 238, 238, 0.5);
 }
 
-/* Kustomisasi Scrollbar (Opsional) */
-::-webkit-scrollbar {
-  width: 8px;
+/* === Dark Mode (system preference) === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #06141B;
+    --bg-card: rgba(17, 33, 45, 0.7);
+    --text-main: #CCD0CF;
+    --text-secondary: #9BA8AB;
+    --border: rgba(155, 168, 171, 0.15);
+    --glass-bg: rgba(17, 33, 45, 0.5);
+    --glass-border: rgba(155, 168, 171, 0.2);
+    --glass-shadow: rgba(0, 0, 0, 0.3);
+    --input-bg: rgba(17, 33, 45, 0.6);
+  }
 }
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+
+/* === 3D & Custom Utilities === */
+
+.perspective-1000 {
+  perspective: 1000px;
 }
-::-webkit-scrollbar-thumb {
-  background: #4a7de2;
-  border-radius: 4px;
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: rotateY(-5deg) rotateX(5deg) translateZ(10px);
+  box-shadow: 20px 20px 60px rgba(6, 20, 27, 0.15);
+}
+
+/* Glass premium menggunakan CSS variables */
+.glass-premium {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px var(--glass-shadow),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Shimmer text */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #253745 0%,
+    #9BA8AB 40%,
+    #253745 60%,
+    #4A5C6A 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      #9BA8AB 0%,
+      #CCD0CF 40%,
+      #9BA8AB 60%,
+      #CCD0CF 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+  }
+}
+
+.glow-primary {
+  box-shadow: 0 0 20px rgba(37, 55, 69, 0.3),
+              0 0 40px rgba(37, 55, 69, 0.1);
+}
+
+/* Custom cursor */
+* {
+  cursor: none;
+}
+
+.custom-cursor {
+  width: 12px;
+  height: 12px;
+  background: #253745;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
 }
