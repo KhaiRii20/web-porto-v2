@@ -30,8 +30,8 @@ export default function About() {
     { name: "TypeScript", icon: "ri-code-s-slash-line", color: "text-blue-600 dark:text-blue-400", level: 75 },
     { name: "Node.js",    icon: "ri-nodejs-line",       color: "text-green-600 dark:text-green-400",level: 70 },
     { name: "Git",        icon: "ri-git-branch-line",   color: "text-orange-600 dark:text-orange-400",level: 80 },
-    { name: "Python",     icon: "ri-python-fill",       color: "text-blue-700 dark:text-blue-500", level: 65 },
-    { name: "C++",        icon: "ri-cplusplus-fill",      color: "text-blue-400 dark:text-blue-300", level: 60 },
+    { name: "Python",     icon: "ri-python-line",       color: "text-blue-700 dark:text-blue-500", level: 65 },
+    { name: "C++",        icon: "ri-cplusplus-line",      color: "text-blue-400 dark:text-blue-300", level: 60 },
   ];
 
   return (
